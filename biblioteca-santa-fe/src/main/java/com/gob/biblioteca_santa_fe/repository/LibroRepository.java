@@ -9,22 +9,40 @@ import java.util.List;
 @Repository
 public class LibroRepository {
 
-    List<Libro> libros;
+    //List<Libro> libros;
 
-    public LibroRepository(){
+    // public LibroRepository(){
 
-        libros= new ArrayList<>();
+    //     libros= new ArrayList<>();
 
-        libros.add(new Libro("Cien Años de Soledad", "Gabriel García Márquez", 5, 3));
-        libros.add(new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", 7, 1));
-        libros.add(new Libro("1984", "George Orwell", 4, 2));
-        libros.add(new Libro("El Principito", "Antoine de Saint-Exupéry", 10, 5));
-        libros.add(new Libro("El Señor de los Anillos", "J.R.R. Tolkien", 3, 1));
-        libros.add(new Libro("La Odisea", "Homero", 8, 6));
-        libros.add(new Libro("Fahrenheit 451", "Ray Bradbury", 9, 4));
-        libros.add(new Libro("Matar a un ruiseñor", "Harper Lee", 6, 2));
-        libros.add(new Libro("Crimen y castigo", "Fiódor Dostoyevski", 5, 2));
-        libros.add(new Libro("Los miserables", "Victor Hugo", 12, 7));
+    //     libros.add(new Libro("Cien Años de Soledad", "Gabriel García Márquez", 5, 3));
+    //     libros.add(new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", 7, 1));
+    //     libros.add(new Libro("1984", "George Orwell", 4, 2));
+    //     libros.add(new Libro("El Principito", "Antoine de Saint-Exupéry", 10, 5));
+    //     libros.add(new Libro("El Señor de los Anillos", "J.R.R. Tolkien", 3, 1));
+    //     libros.add(new Libro("La Odisea", "Homero", 8, 6));
+    //     libros.add(new Libro("Fahrenheit 451", "Ray Bradbury", 9, 4));
+    //     libros.add(new Libro("Matar a un ruiseñor", "Harper Lee", 6, 2));
+    //     libros.add(new Libro("Crimen y castigo", "Fiódor Dostoyevski", 5, 2));
+    //     libros.add(new Libro("Los miserables", "Victor Hugo", 12, 7));
+    // }
+
+    private List<Libro> libros;
+    private Long nextId = 1L;
+
+    public LibroRepository() {
+        libros = new ArrayList<>();
+        // Asignar ID manualmente
+        libros.add(new Libro(nextId++, "1234567890", "Cien Años de Soledad", "Gabriel García Márquez", 5, null, null, null));
+        libros.add(new Libro(nextId++, "0987654321", "Don Quijote de la Mancha", "Miguel de Cervantes", 7, null, null,null));
+        libros.add(new Libro(nextId++, "1122334455", "1984", "George Orwell", 4, null, null,null));
+        libros.add(new Libro(nextId++, "2233445566", "El Principito", "Antoine de Saint-Exupéry", 10, null, null,null));
+        libros.add(new Libro(nextId++, "3344556677", "El Señor de los Anillos", "J.R.R. Tolkien", 3, null, null,null));
+        libros.add(new Libro(nextId++, "4455667788", "La Odisea", "Homero", 8, null, null,null));
+        libros.add(new Libro(nextId++, "5566778899", "Fahrenheit 451", "Ray Bradbury", 9, null, null,null));
+        libros.add(new Libro(nextId++, "6677889900", "Matar a un ruiseñor", "Harper Lee", 6, null, null,null));
+        libros.add(new Libro(nextId++, "7788990011", "Crimen y castigo", "Fiódor Dostoyevski", 5, null, null,null));
+        libros.add(new Libro(nextId++, "8899001122", "Los miserables", "Victor Hugo", 12, null, null,null));
     }
 
     public List<Libro> findAll(){
