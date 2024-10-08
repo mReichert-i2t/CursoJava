@@ -21,15 +21,15 @@ public class LibroController {
         return  ResponseEntity.ok(libroService.findAll());
     }
 
-    @GetMapping("/{nombre}")
-    public ResponseEntity<Libro> findByNombre(@PathVariable String nombre){
+    // @GetMapping("/{nombre}")
+    // public ResponseEntity<Libro> findByNombre(@PathVariable String nombre){
 
-        return ResponseEntity.ok(libroService.findByNombre(nombre));
-    }
+    //     return ResponseEntity.ok(libroService.findByNombre(nombre));
+    // }
 
-    @PostMapping()
-    public ResponseEntity<String> crearLibro(@RequestBody Libro libro){
+    // @PostMapping()
+    // public ResponseEntity<String> crearLibro(@RequestBody Libro libro){
 
-        return ResponseEntity.ok("El libro se creo con exito");
-    }
+    //     return ResponseEntity.ok("El libro se creo con exito");
+    // }
 }
