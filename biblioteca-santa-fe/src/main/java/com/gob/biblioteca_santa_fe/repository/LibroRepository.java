@@ -28,7 +28,7 @@ public interface LibroRepository extends JpaRepository<Libro, Integer> {
     //     libros.add(new Libro("Los miserables", "Victor Hugo", 12, 7));
     // }
 
-    public static final List<Libro> libros = null;
+    public final List<Libro> libros = null;
 
     // public LibroRepository() {
     //     libros = new ArrayList<>();
@@ -45,9 +45,9 @@ public interface LibroRepository extends JpaRepository<Libro, Integer> {
     //     libros.add(new Libro(nextId++, "8899001122", "Los miserables", "Victor Hugo", 12, null, null,null));
     // }
 
-    public default List<Libro> findAll(){
-        return this.libros;
-    }
+    // public default List<Libro> findAll(){
+    //     return this.libros;
+    // }
 
     public default Libro findByNombre(String nombre){
 
