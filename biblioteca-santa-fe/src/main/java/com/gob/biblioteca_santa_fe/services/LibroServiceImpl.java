@@ -21,16 +21,17 @@ public class LibroServiceImpl implements LibroService {
 
     @Override
     public Libro findByNombre(String nombre) {
-        return libroRepository.findByNombre(nombre);
+        return libroRepository.findByNombre(nombre)
+        .orElseThrow(() -> new RuntimeException("Libro no encontrado"));
     }
 
     @Override
-    public Libro findByAutor(String autor) {
+    public List<Libro> findByAutor(String autor) {
         return libroRepository.findByAutor(autor);
     }
 
     @Override
     public void agregarLibro(Libro libro) {
-        libroRepository.agregarLibro(libro);
+        libroRepository.save(libro);
     }
 }

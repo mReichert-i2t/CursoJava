@@ -10,7 +10,7 @@ public interface LibroService {
 
     public Libro findByNombre(String nombre);
 
-    public Libro findByAutor(String autor);
+    public List<Libro> findByAutor(String autor);
 
     public void agregarLibro(Libro libro);
 }

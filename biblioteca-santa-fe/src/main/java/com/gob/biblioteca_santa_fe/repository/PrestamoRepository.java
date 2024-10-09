@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.gob.biblioteca_santa_fe.model.Prestamo;
 
 @Repository
-public interface PrestamoRepository extends JpaRepository<Prestamo, Integer> {
+public interface PrestamoRepository extends JpaRepository<Prestamo, Long> {
 }

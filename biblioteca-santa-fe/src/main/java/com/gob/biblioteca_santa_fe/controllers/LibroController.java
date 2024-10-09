@@ -21,15 +21,21 @@ public class LibroController {
         return  ResponseEntity.ok(libros);
     }
 
-    @GetMapping("/{nombre}")
+    @GetMapping("/nombre/{nombre}")
     public ResponseEntity<Libro> findByNombre(@PathVariable String nombre){
 
         return ResponseEntity.ok(libroService.findByNombre(nombre));
     }
 
+    @GetMapping("/autor/{autor}")
+    public ResponseEntity<List<Libro>> findByAutor(@PathVariable String autor){
+
+        return ResponseEntity.ok(libroService.findByAutor(autor));
+    }
+
     @PostMapping()
     public ResponseEntity<String> crearLibro(@RequestBody Libro libro){
-
+        libroService.agregarLibro(libro);
         return ResponseEntity.ok("El libro se creo con exito");
     }
 }

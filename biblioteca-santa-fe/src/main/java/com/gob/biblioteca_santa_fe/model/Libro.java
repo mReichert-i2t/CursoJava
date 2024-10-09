@@ -3,11 +3,13 @@ package com.gob.biblioteca_santa_fe.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import java.time.LocalDate;
 
 import java.util.Date;
 import java.util.List;
@@ -23,11 +25,18 @@ public class Libro {
     private Long id;
 
     private String isbn;
+
     private String nombre;
+
     private String autor;
+
     private Integer cantidad;
-    private Date fechaCreacion;
-    private Date fechaModificacion;
+
+    @Column(name = "FECHA_CREACION")
+    private LocalDate fechaCreacion;
+
+    @Column(name = "FECHA_MODIFICACION")
+    private LocalDate fechaModificacion;
 
     @OneToMany(mappedBy = "libro")
     private List<Prestamo> prestamos;
