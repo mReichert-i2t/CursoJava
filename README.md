@@ -4,10 +4,10 @@ https://www.arquitecturajava.com/jpa-composite-key-y-business-objects/
 
 usuario de git Maxi Reichert
 
-mReichert-i2t
-maximiliano.reichert@i2t-sa.com.ar
+user: mReichert-i2t
+mail: maximiliano.reichert@i2t-sa.com.ar
 
 usuario de git Fabio Oliver
 
-i2t-folivera
-fabio.olivera@i2t-sa.com.ar
+user: i2t-folivera
+mail: fabio.olivera@i2t-sa.com.ar
