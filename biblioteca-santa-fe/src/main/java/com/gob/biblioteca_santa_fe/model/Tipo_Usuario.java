@@ -21,6 +21,7 @@ import jakarta.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "TIPO_USUARIO")
 public class Tipo_Usuario {
 
     @Id

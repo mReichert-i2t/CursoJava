@@ -1,7 +1,10 @@
 package com.gob.biblioteca_santa_fe.DTOs;
 
+import lombok.Getter;
+
 import java.util.Date;
 
+@Getter
 public class LibroDTO {
     private Long id;
     private String isbn;

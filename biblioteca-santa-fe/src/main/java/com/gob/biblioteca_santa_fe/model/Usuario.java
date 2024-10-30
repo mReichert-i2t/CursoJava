@@ -3,23 +3,18 @@ package com.gob.biblioteca_santa_fe.model;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "USUARIO")
 public class Usuario {
 
     @Id
@@ -45,6 +40,6 @@ public class Usuario {
     @JoinColumn(name = "id_tipo_usuario", nullable = false)
     private Tipo_Usuario tipoUsuario;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<Prestamo> prestamos;
+//    @OneToMany(mappedBy = "usuario")
+//    private List<Prestamo> prestamos;
 }

@@ -20,6 +20,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @IdClass(PrestamoId.class)
 @Entity
+@Table(name = "PRESTAMO")
 public class Prestamo {
 
     @Id

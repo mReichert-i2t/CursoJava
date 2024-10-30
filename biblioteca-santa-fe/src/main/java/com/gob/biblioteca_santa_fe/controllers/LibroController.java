@@ -1,5 +1,6 @@
 package com.gob.biblioteca_santa_fe.controllers;
 
+import com.gob.biblioteca_santa_fe.DTOs.LibroDTO;
 import com.gob.biblioteca_santa_fe.interfaces.LibroService;
 import com.gob.biblioteca_santa_fe.model.Libro;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class LibroController {
     }
 
     @PostMapping()
-    public ResponseEntity<String> crearLibro(@RequestBody Libro libro){
+    public ResponseEntity<String> crearLibro(@RequestBody LibroDTO libro){
         libroService.agregarLibro(libro);
         return ResponseEntity.ok("El libro se creo con exito");
     }

@@ -1,5 +1,6 @@
 package com.gob.biblioteca_santa_fe.interfaces;
 
+import com.gob.biblioteca_santa_fe.DTOs.LibroDTO;
 import com.gob.biblioteca_santa_fe.model.Libro;
 
 import java.util.List;
@@ -12,5 +13,5 @@ public interface LibroService {
 
     public List<Libro> findByAutor(String autor);
 
-    public void agregarLibro(Libro libro);
+    public void agregarLibro(LibroDTO libro);
 }
