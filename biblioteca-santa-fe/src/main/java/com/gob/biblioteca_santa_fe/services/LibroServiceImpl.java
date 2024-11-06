@@ -1,6 +1,7 @@
 package com.gob.biblioteca_santa_fe.services;
 
 import com.gob.biblioteca_santa_fe.DTOs.LibroDTO;
+import com.gob.biblioteca_santa_fe.exceptions.EntidadNoEncontradaExcpetion;
 import com.gob.biblioteca_santa_fe.exceptions.EntidadRepetidaException;
 import com.gob.biblioteca_santa_fe.interfaces.LibroService;
 import com.gob.biblioteca_santa_fe.model.Libro;
@@ -51,5 +52,12 @@ public class LibroServiceImpl implements LibroService {
         );
 
         libroRepository.save(libro);
+    }
+
+    @Override
+    public Libro findById(Long id) {
+
+        return libroRepository.findById(id)
+                .orElseThrow(() -> new EntidadNoEncontradaExcpetion("El libro con id " + id + " no existe"));
     }
 }

@@ -14,4 +14,6 @@ public interface LibroService {
     public List<Libro> findByAutor(String autor);
 
     public void agregarLibro(LibroDTO libro);
+
+    public Libro findById(Long id);
 }

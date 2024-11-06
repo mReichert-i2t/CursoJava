@@ -1,21 +1,19 @@
 package com.gob.biblioteca_santa_fe.model;
 
+import java.time.Instant;
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com.gob.biblioteca_santa_fe.enums.EstadoPrestamo;
+import jakarta.persistence.*;
+import lombok.*;
+
 import java.time.LocalDate;
+import java.util.Objects;
 
 
-@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @IdClass(PrestamoId.class)
@@ -38,12 +36,25 @@ public class Prestamo {
 
     @Column(name = "FECHA_FIN")
     private LocalDate fechaFin;
-    
-    private String estado;
+
+    @Enumerated(EnumType.STRING)
+    private EstadoPrestamo estado;
 
     @Column(name = "FECHA_CREACION")
-    private LocalDate fechaCreacion;
+    private Instant fechaCreacion;
 
     @Column(name = "FECHA_MODIFICACION")
-    private LocalDate fechaModificacion;
+    private Instant fechaModificacion;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Prestamo prestamo)) return false;
+        return Objects.equals(libro, prestamo.libro) && Objects.equals(usuario, prestamo.usuario) && Objects.equals(fechaInicio, prestamo.fechaInicio) && estado == prestamo.estado;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(libro, usuario, fechaInicio, estado);
+    }
 }

@@ -122,5 +122,13 @@
 			</plugin>
 		</plugins>
 	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surfire-report-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
 
 </project>
