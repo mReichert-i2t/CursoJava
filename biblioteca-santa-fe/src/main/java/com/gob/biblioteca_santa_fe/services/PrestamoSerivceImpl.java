@@ -1,5 +1,6 @@
 package com.gob.biblioteca_santa_fe.services;
 
+import com.gob.biblioteca_santa_fe.DTOs.ResponseStoredDTO;
 import com.gob.biblioteca_santa_fe.enums.EstadoPrestamo;
 import com.gob.biblioteca_santa_fe.exceptions.EntidadRepetidaException;
 import com.gob.biblioteca_santa_fe.exceptions.NoHayLibrosException;
@@ -9,24 +10,30 @@ import com.gob.biblioteca_santa_fe.interfaces.UsuarioService;
 import com.gob.biblioteca_santa_fe.model.Libro;
 import com.gob.biblioteca_santa_fe.model.Prestamo;
 import com.gob.biblioteca_santa_fe.model.Usuario;
+import com.gob.biblioteca_santa_fe.repository.PrestamoDao;
 import com.gob.biblioteca_santa_fe.repository.PrestamoRepository;
 import org.springframework.cglib.core.Local;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PrestamoSerivceImpl implements PrestamoService {
 
     private final PrestamoRepository prestamoRepository;
     private final LibroService libroService;
     private final UsuarioService usuarioService;
+    private final PrestamoDao prestamoDao;
 
     public PrestamoSerivceImpl(PrestamoRepository prestamoRepository, LibroService libroService,
-                               UsuarioService usuarioService) {
+                               UsuarioService usuarioService, PrestamoDao prestamoDao) {
         this.prestamoRepository = prestamoRepository;
         this.libroService = libroService;
         this.usuarioService = usuarioService;
+        this.prestamoDao = prestamoDao;
     }
 
     @Override
@@ -66,5 +73,11 @@ public class PrestamoSerivceImpl implements PrestamoService {
         );
 
         prestamoRepository.save(prestamo);
+    }
+
+    @Override
+    public List<ResponseStoredDTO> getPrestamoPorEstado(String estado) {
+
+        return prestamoDao.getPrestamosPorEstado(estado);
     }
 }

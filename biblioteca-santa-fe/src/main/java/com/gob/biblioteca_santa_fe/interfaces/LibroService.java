@@ -16,4 +16,6 @@ public interface LibroService {
     public void agregarLibro(LibroDTO libro);
 
     public Libro findById(Long id);
+
+    public List<LibroDTO> listarLibros();
 }

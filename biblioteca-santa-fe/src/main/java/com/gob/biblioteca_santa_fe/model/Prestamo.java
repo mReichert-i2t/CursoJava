@@ -3,6 +3,7 @@ package com.gob.biblioteca_santa_fe.model;
 import java.time.Instant;
 import java.util.Date;
 
+import com.gob.biblioteca_santa_fe.DTOs.ResponseStoredDTO;
 import com.gob.biblioteca_santa_fe.enums.EstadoPrestamo;
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,6 +20,30 @@ import java.util.Objects;
 @IdClass(PrestamoId.class)
 @Entity
 @Table(name = "PRESTAMO")
+@NamedStoredProcedureQuery(
+        name="listarPrstamosPorEstadoPrestamo",
+        procedureName = "listarPrestamosPorEstado",
+        parameters = {
+                @StoredProcedureParameter(
+                        name = "estado",
+                        type = String.class,
+                        mode = ParameterMode.IN)
+        },
+        resultSetMappings ="getPrestamosPorEstadoPrestamo"
+)
+@SqlResultSetMapping(name= "getPrestamosPorEstadoPrestamo", classes = @ConstructorResult(
+        targetClass = ResponseStoredDTO.class,
+        columns = {
+                @ColumnResult(name = "isbn", type = String.class),
+                @ColumnResult(name = "nombre_libro", type = String.class),
+                @ColumnResult(name = "autor", type = String.class),
+                @ColumnResult(name = "fecha_inicio", type = LocalDate.class),
+                @ColumnResult(name = "fecha_fin", type = LocalDate.class),
+                @ColumnResult(name = "estado", type = String.class),
+                @ColumnResult(name = "nombre_usuario", type = String.class),
+                @ColumnResult(name = "apellido", type = String.class)
+        }
+))
 public class Prestamo {
 
     @Id
@@ -49,7 +74,8 @@ public class Prestamo {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Prestamo prestamo)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
+        Prestamo prestamo = (Prestamo) o;
         return Objects.equals(libro, prestamo.libro) && Objects.equals(usuario, prestamo.usuario) && Objects.equals(fechaInicio, prestamo.fechaInicio) && estado == prestamo.estado;
     }
 

@@ -39,4 +39,9 @@ public class LibroController {
         libroService.agregarLibro(libro);
         return ResponseEntity.ok("El libro se creo con exito");
     }
+
+    @GetMapping("/listarLibros")
+    public ResponseEntity<List<LibroDTO>> listarLibros(){
+        return ResponseEntity.ok(libroService.listarLibros());
+    }
 }

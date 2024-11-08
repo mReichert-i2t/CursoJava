@@ -14,6 +14,11 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "LIBRO")
+@NamedStoredProcedureQuery(
+        name = "listarLibros",
+        procedureName = "listarLibros",
+        resultClasses = Libro.class
+)
 public class Libro {
 
     @Id

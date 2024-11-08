@@ -3,6 +3,7 @@ package com.gob.biblioteca_santa_fe.repository;
 import com.gob.biblioteca_santa_fe.model.Libro;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,4 +17,7 @@ public interface LibroRepository extends JpaRepository<Libro, Long> {
     List<Libro> findByAutor(String autor);
 
     Optional<Libro> findByIsbn(String isbn);
+
+    @Procedure(name = "listarLibros")
+    List<Libro> listarLibros();
 }

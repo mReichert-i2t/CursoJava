@@ -6,9 +6,11 @@ import com.gob.biblioteca_santa_fe.exceptions.EntidadRepetidaException;
 import com.gob.biblioteca_santa_fe.interfaces.LibroService;
 import com.gob.biblioteca_santa_fe.model.Libro;
 import com.gob.biblioteca_santa_fe.repository.LibroRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,5 +61,21 @@ public class LibroServiceImpl implements LibroService {
 
         return libroRepository.findById(id)
                 .orElseThrow(() -> new EntidadNoEncontradaExcpetion("El libro con id " + id + " no existe"));
+    }
+
+    @Override
+    @Transactional
+    public List<LibroDTO> listarLibros() {
+
+        List<Libro> libros = libroRepository.listarLibros();
+
+        List<LibroDTO> result = new ArrayList<>();
+
+        result = libros.stream().
+            map( libro -> new LibroDTO(
+                       libro.getId(),libro.getIsbn(), libro.getNombre(), libro.getAutor(), libro.getCantidad(), libro.getFechaCreacion(), libro.getFechaModificacion()))
+               .toList();
+
+        return result;
     }
 }
