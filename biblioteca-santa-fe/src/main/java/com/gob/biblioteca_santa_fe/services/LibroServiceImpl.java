@@ -8,6 +8,10 @@ import com.gob.biblioteca_santa_fe.model.Libro;
 import com.gob.biblioteca_santa_fe.repository.LibroRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,6 +27,14 @@ public class LibroServiceImpl implements LibroService {
     @Override
     public List<Libro> findAll() {
         return libroRepository.findAll();
+    }
+
+    @Override
+    public Page<Libro> findAll(int page, int size) {
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").ascending());
+
+        return libroRepository.findAll(pageable);
     }
 
     @Override

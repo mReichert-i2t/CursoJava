@@ -4,6 +4,7 @@ import com.gob.biblioteca_santa_fe.DTOs.LibroDTO;
 import com.gob.biblioteca_santa_fe.interfaces.LibroService;
 import com.gob.biblioteca_santa_fe.model.Libro;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,5 +44,11 @@ public class LibroController {
     @GetMapping("/listarLibros")
     public ResponseEntity<List<LibroDTO>> listarLibros(){
         return ResponseEntity.ok(libroService.listarLibros());
+    }
+
+    @GetMapping("/listaPaginada")
+    public ResponseEntity<Page<Libro>> listaPaginada(){
+
+        return ResponseEntity.ok(libroService.findAll(0, 10));
     }
 }
