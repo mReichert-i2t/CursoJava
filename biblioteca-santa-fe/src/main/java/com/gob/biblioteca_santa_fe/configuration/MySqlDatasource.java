@@ -27,6 +27,7 @@ public class MySqlDatasource {
     String dialect;
 
     @Bean(name = "mySqlDatasource")
+    @ConfigurationProperties("mysql.datasource") //prefijo del jndi-name en el properties
     public DataSource dataSource() { return DataSourceBuilder.create().build();}
 
     @Bean(name = "mySqlEntityManager")
