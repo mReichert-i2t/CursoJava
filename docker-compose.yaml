@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+
+  db-mysql:
+    image: mysql
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: 1q2w
+    ports:
+      - 8085:3306
+  
+  db:
+    image: postgres
+    restart: on-failure
+    environment:
+      POSTGRES_PASSWORD: 1q2w
+    ports:
+     - 5432:5432
